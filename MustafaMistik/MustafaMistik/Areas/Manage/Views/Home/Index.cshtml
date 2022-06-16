@@ -1,0 +1,20 @@
+﻿@model List< MeetMenu>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<tr>
+@foreach (var item in Model)
+{
+        <td>@item.Description</td>
+                <td>@item.Title</td>
+                <td>@item.ImageUrl</td>
+                <td>@item.Catagory</td>
+                <td><a asp-action="Update" asp-controller="Home" asp-area="Manage" asp-route-Id="@item.Id">Update</a></td>
+                                <td><a asp-action="Delete" asp-controller="Home" asp-area="Manage" asp-route-Id="@item.Id">delete</a></td>
+
+
+
+}
+
+</tr>

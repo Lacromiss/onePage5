@@ -18,27 +18,7 @@ namespace OnePage5.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("OnePage5.Models.Catagory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ToEatId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ToEatId");
-
-                    b.ToTable("catagories");
-                });
-
-            modelBuilder.Entity("OnePage5.Models.ToEat", b =>
+            modelBuilder.Entity("OnePage5.Models.Menu", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,19 +31,39 @@ namespace OnePage5.Migrations
                     b.Property<string>("ImgUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SinifId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("toEat");
+                    b.HasIndex("SinifId");
+
+                    b.ToTable("menus");
                 });
 
-            modelBuilder.Entity("OnePage5.Models.Catagory", b =>
+            modelBuilder.Entity("OnePage5.Models.Sinif", b =>
                 {
-                    b.HasOne("OnePage5.Models.ToEat", "ToEat")
-                        .WithMany("Catagories")
-                        .HasForeignKey("ToEatId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("sinifs");
+                });
+
+            modelBuilder.Entity("OnePage5.Models.Menu", b =>
+                {
+                    b.HasOne("OnePage5.Models.Sinif", "Sinif")
+                        .WithMany("Menus")
+                        .HasForeignKey("SinifId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

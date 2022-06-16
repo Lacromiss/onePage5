@@ -27,14 +27,8 @@ namespace OnePage5.Utilites
             }
             return fileName;
         }
-        public static void DeleteFile(string path)
-        {
-            if (System.IO.File.Exists(path))
-            {
-                System.IO.File.Delete(path);
 
-            }
 
         }
     }
-}
+

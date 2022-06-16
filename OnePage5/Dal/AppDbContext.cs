@@ -9,9 +9,10 @@ namespace OnePage5.Dal
         {
 
         }
-        public DbSet<ToEat> toEat { get; set; }
+        DbSet<Menu> menus { get; set; }
+        DbSet<Sinif> sinifs { get; set; }
 
-        public DbSet<Catagory> catagories { get; set; }
+
 
     }
 }
