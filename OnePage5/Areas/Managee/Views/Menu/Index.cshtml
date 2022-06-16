@@ -1,0 +1,15 @@
+﻿@model List<ToEat>
+@{
+    ViewData["Title"] = "Index";
+}
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Title</td>
+       <td>@item.Description</td> 
+              <td>@item.ImgUrl</td> 
+       <td>@item.Description</td> 
+
+    </tr>
+    
+}
